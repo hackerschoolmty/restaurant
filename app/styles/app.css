@@ -1,0 +1,16 @@
+.menu-item  > img {
+  width: 100%;
+  height: 200px;
+}
+
+.order-top-form, .new-order-top-form {
+  margin-bottom: 1.5em;
+}
+
+.new-order-remove-item-warning {
+  margin-bottom: 0;
+}
+
+.btn-soft-danger {
+  color: #d9534f;
+}

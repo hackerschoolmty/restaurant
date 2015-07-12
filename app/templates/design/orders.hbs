@@ -1,0 +1,33 @@
+<div class="page-header">
+  <h1>Órdenes</h1>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Cliente</th>
+      <th>Número Mesa</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#link-to "design.order" tagName="tr"}}
+      <td>12<strong>35</strong></td>
+      <td>Ricardo</td>
+      <td>M6</td>
+      <td class="text-warning">Pendiente</td>
+    {{/link-to}}
+    <tr>
+      <td>12<strong>34</strong></td>
+      <td>Benito</td>
+      <td>M3</td>
+      <td class="text-info">En proceso</td>
+    </tr>
+    <tr>
+      <td>12<strong>33</strong></td>
+      <td>Karla</td>
+      <td>M2</td>
+      <td class="text-success">Terminada</td>
+    </tr>
+  </tbody>
+</table>
