@@ -69,6 +69,6 @@ function priceOfItemWithName(name) {
   return find(".thumbnail:contains(" + name + ") [data-price]").text();
 }
 
-function ImageOfItemWithName(name) {
+function imageOfItemWithName(name) {
   return find(".thumbnail:contains(" + name + ") img").attr("src");
 }
