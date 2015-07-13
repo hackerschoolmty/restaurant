@@ -1,0 +1,7 @@
+<div class="form-group {{if hasErrors 'has-error'}}">
+  {{yield}}
+
+  {{#each errors as |error|}}
+    <span class="help-block">{{error.message}}</span>
+  {{/each}}
+</div>
