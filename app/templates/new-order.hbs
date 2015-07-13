@@ -6,9 +6,18 @@
   <div class="col-md-6">
     <div class="form-group {{if model.errors.clientName 'has-error'}}">
       <label for="client">Nombre del cliente</label>
-      {{input class="form-control" id="client" value=model.clientName
-      placeholder="Juanito, Pepito..."}}
+      {{input class="form-control" id="client" value=model.clientName placeholder="Juanito, Pepito..."}}
       {{#each model.errors.clientName as |error|}}
+      <span class="help-block">{{error.message}}</span>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group {{if model.errors.tableId 'has-error'}}">
+      <label for="table">Número de mesa</label>
+      {{input class="form-control" id="table" value=model.tableId placeholder="M2, M3..."}}
+      {{#each model.errors.tableId as |error|}}
       <span class="help-block">{{error.message}}</span>
       {{/each}}
     </div>

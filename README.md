@@ -44,7 +44,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 * Waiter sees menu
 * Waiter creates new order
   * Waiter adds client's name to new order
-  * Waiter especifies client's table
+  * Waiter specifies client's table
   * Waiter adds item to new order
   * Waiter modifies item quantity
   * Waiter adds item quantity selecting the item again from the menu
