@@ -39,9 +39,21 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `ember build` (development)
 * `ember build --environment production` (production)
 
-### Deploying
+## Features
 
-Specify what it takes to deploy your app.
+* Waiter sees menu
+* Waiter creates new order
+  * Waiter adds client's name to new order
+  * Waiter especifies client's table
+  * Waiter adds item to new order
+  * Waiter modifies item quantity
+  * Waiter adds item quantity selecting the item again from the menu
+  * Waiter removes item from order
+  * Waiter sees the order's total
+  * Waiter sends the order
+* Employee sees all orders list
+* Employee sees order's detail
+* Employee modifies the order's status
 
 ## Further Reading / Useful Links
 
