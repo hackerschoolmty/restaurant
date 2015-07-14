@@ -48,6 +48,15 @@ test("with the price of every item", function(assert) {
   });
 });
 
+test("with the image of every item", function(assert) {
+  visit('/');
+
+  andThen(function() {
+    assert.equal(imageOfItemWithName("Tradicional"), "/images/burger-1.jpg");
+    assert.equal(imageOfItemWithName("Con Jamón"), "/images/burger-2.jpg");
+  });
+});
+
 function numberOfItems() {
   return find(".thumbnail").length;
 }
@@ -58,4 +67,8 @@ function hasItemWithName(name) {
 
 function priceOfItemWithName(name) {
   return find(".thumbnail:contains(" + name + ") [data-price]").text();
+}
+
+function imageOfItemWithName(name) {
+  return find(".thumbnail:contains(" + name + ") img").attr("src");
 }
