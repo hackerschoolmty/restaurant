@@ -40,6 +40,20 @@ test('clicking the item thumbnail', function(assert) {
   });
 });
 
+test("and modifies item quantity", function(assert) {
+  visit('/');
+  click(itemWithName("Con Jamón"));
+  click(incrementQuantity());
+  click(incrementQuantity());
+  click(decrementQuantity());
+
+  andThen(function() {
+    assert.equal(orderItemsCount(), 1);
+    assert.equal(quantityOfItem(orderItemWithName("Con Jamón")), "2");
+    assert.equal(totalOfItem(orderItemWithName("Con Jamón")), "$140.00");
+  });
+});
+
 function itemWithName(name) {
   return ".thumbnail:contains(" + name + ")";
 }
@@ -58,4 +72,12 @@ function quantityOfItem(item) {
 
 function totalOfItem(item) {
   return item.find("[data-total]").text();
+}
+
+function incrementQuantity() {
+  return "button:contains(+)";
+}
+
+function decrementQuantity() {
+  return "button:contains(-)";
 }
