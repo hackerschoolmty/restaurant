@@ -37,6 +37,7 @@
   <tbody>
     {{#each model.items as |item|}}
       <tr class="row" data-order-item>
+        {{#if item.hasQuantity}}
         <td class="col-md-4">{{item.name}}</td>
         <td class="col-md-4 text-center">
           <div class="input-group">
@@ -48,6 +49,17 @@
           </div>
         </td>
         <td class="col-md-4 text-right" data-total>{{number-to-currency item.total}}</td>
+        {{else}}
+        <td class="col-md-12 text-center" colspan="3">
+          <div class="alert alert-warning new-order-remove-item-warning">
+            <p>¿Quieres remover este elemento?</p>
+            <p>
+            <button class="btn btn-default" {{action "cancelRemoveItem" item}}>Cancelar</button>
+            <button class="btn btn-default btn-soft-danger" {{action "removeItem" item}}>Remover</button>
+            </p>
+          </div>
+        </td>
+        {{/if}}
       </tr>
     {{/each}}
   </tbody>

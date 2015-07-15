@@ -12,6 +12,14 @@ export default Ember.Route.extend({
 
     decrementQuantity: function(item) {
       item.decrementProperty("quantity");
+    },
+
+    removeItem: function(item) {
+      item.destroyRecord();
+    },
+
+    cancelRemoveItem: function(item) {
+      item.set("quantity", 1);
     }
   }
 });
