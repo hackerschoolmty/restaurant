@@ -11,7 +11,9 @@ Router.map(function() {
     this.route("order");
   });
 
-  this.route("newOrder", { path: "/" });
+  this.route('menu', { path: "/" }, function() {
+    this.resource("newOrder", { path: "/" });
+  });
 });
 
 export default Router;

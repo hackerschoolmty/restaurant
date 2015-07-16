@@ -15,5 +15,32 @@
       {{input value=model.tableId class="form-control" id="table" placeholder="M1, M2..."}}
     {{/form-group}}
   </div>
+
+  <table class="table">
+    <thead>
+      <tr class="row">
+        <th class="col-md-4">Platillo</th>
+        <th class="col-md-4 text-center">Cantidad</th>
+        <th class="col-md-4 text-right">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.items as |item|}}
+        <tr class="row" data-order-item>
+          <td class="col-md-4">{{item.name}}</td>
+          <td class="col-md-4 text-center">
+            <div class="input-group">
+              <input value="1" type="text" class="form-control" width="3" data-quantity>
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="button">+</button>
+                <button class="btn btn-default" type="button">-</button>
+              </div>
+            </div>
+          </td>
+          <td class="col-md-4 text-right" data-total>{{number-to-currency item.total}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>
 <button id="send_order" class="btn btn-primary btn-lg pull-right" {{action "sendOrder"}}>Enviar Orden</button>
