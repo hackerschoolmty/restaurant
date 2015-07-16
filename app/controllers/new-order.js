@@ -7,10 +7,15 @@ export default Ember.Controller.extend({
     }
   },
 
+  isValid: function() {
+    return this.get("model.errors.isEmpty");
+  },
+
   actions: {
     sendOrder: function() {
       this.validatePresenceOf("clientName");
       this.validatePresenceOf("tableId");
+      return this.isValid();
     }
   }
 });

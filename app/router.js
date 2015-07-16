@@ -14,6 +14,7 @@ Router.map(function() {
 
   this.route("menu", { path: "/" }, function() {
     this.resource("newOrder", { path: "/" });
+    this.resource("order", { path: "/order/:order_id" });
   });
 });
 

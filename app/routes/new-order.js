@@ -20,6 +20,13 @@ export default Ember.Route.extend({
 
     cancelRemoveItem: function(item) {
       item.set("quantity", 1);
+    },
+
+    sendOrder: function() {
+      var _this = this;
+      _this.modelFor("newOrder").save().then(function(order) {
+        _this.transitionTo("order", order);
+      });
     }
   }
 });
