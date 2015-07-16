@@ -1,0 +1,16 @@
+<div class="page-header">
+  <h1>Nueva Orden</h1>
+</div>
+
+<div class="row new-order-top-form">
+  <div class="col-md-6">
+    <div class="form-group {{if model.errors.clientName 'has-error'}}">
+      <label for="client">Nombre del cliente</label>
+      {{input value=model.clientName class="form-control" id="client" placeholder="Juanito, Pepito..."}}
+      {{#each model.errors.clientName as |error|}}
+        <span class="help-block">{{error.message}}</span>
+      {{/each}}
+    </div>
+  </div>
+</div>
+<button id="send_order" class="btn btn-primary btn-lg pull-right" {{action "sendOrder"}}>Enviar Orden</button>

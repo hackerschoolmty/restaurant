@@ -10,6 +10,8 @@ Router.map(function() {
     this.route("orders");
     this.route("order");
   });
+
+  this.route("newOrder", { path: "/" });
 });
 
 export default Router;
