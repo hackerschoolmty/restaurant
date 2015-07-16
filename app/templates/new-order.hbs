@@ -4,22 +4,16 @@
 
 <div class="row new-order-top-form">
   <div class="col-md-6">
-    <div class="form-group {{if model.errors.clientName 'has-error'}}">
+    {{#form-group errors=model.errors.clientName}}
       <label for="client">Nombre del cliente</label>
       {{input value=model.clientName class="form-control" id="client" placeholder="Juanito, Pepito..."}}
-      {{#each model.errors.clientName as |error|}}
-        <span class="help-block">{{error.message}}</span>
-      {{/each}}
-    </div>
+    {{/form-group}}
   </div>
   <div class="col-md-6">
-    <div class="form-group {{if model.errors.tableId 'has-error'}}">
+    {{#form-group errors=model.errors.tableId}}
       <label for="table">Número de mesa</label>
       {{input value=model.tableId class="form-control" id="table" placeholder="M1, M2..."}}
-      {{#each model.errors.tableId as |error|}}
-        <span class="help-block">{{error.message}}</span>
-      {{/each}}
-    </div>
+    {{/form-group}}
   </div>
 </div>
 <button id="send_order" class="btn btn-primary btn-lg pull-right" {{action "sendOrder"}}>Enviar Orden</button>
