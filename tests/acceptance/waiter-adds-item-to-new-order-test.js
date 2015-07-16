@@ -91,6 +91,21 @@ test("and tries to remove and item but then cancels the action", function(assert
   });
 });
 
+test("and sees the order total", function(assert) {
+  visit('/');
+  click(itemWithName("Con Jamón"));
+  click(itemWithName("Tradicional"));
+
+  andThen(function() {
+    assert.equal(orderItemsCount(), 2);
+    assert.equal(quantityOfItem(orderItemWithName("Con Jamón")), "1");
+    assert.equal(quantityOfItem(orderItemWithName("Tradicional")), "1");
+    assert.equal(orderValue("net_total"), "$120.00");
+    assert.equal(orderValue("iva"), "$19.20");
+    assert.equal(orderValue("total"), "$139.20");
+  });
+});
+
 function itemWithName(name) {
   return ".thumbnail:contains(" + name + ")";
 }
@@ -125,4 +140,8 @@ function removeItemButton() {
 
 function cancelRemoveItemButton() {
   return "button:contains(Cancel)";
+}
+
+function orderValue(name) {
+  return findWithAssert("#order_" + name).text();
 }
