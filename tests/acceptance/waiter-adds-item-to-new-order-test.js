@@ -66,6 +66,30 @@ test('and increments quantity clicking the thumbnail again', function(assert) {
   });
 });
 
+test('and removes it from the order', function(assert) {
+  visit('/');
+  click(itemWithName("Con Jamón"));
+  click(decrementQuantity());
+  click(removeItemButton());
+
+  andThen(function() {
+    assert.equal(orderItemsCount(), 0);
+  });
+});
+
+test('and then tries to remove the item but the cancels the action', function(assert) {
+  visit('/');
+  click(itemWithName("Con Jamón"));
+  click(decrementQuantity());
+  click(removeItemCancelation());
+
+  andThen(function() {
+    assert.equal(orderItemsCount(), 1);
+    assert.equal(quantityOfItem(orderItemWithName("Con Jamón")), "1");
+    assert.equal(totalOfItem(orderItemWithName("Con Jamón")), "$70.00");
+  });
+});
+
 function itemWithName(name) {
   return ".thumbnail:contains(" + name + ")";
 }
@@ -92,4 +116,12 @@ function incrementQuantity() {
 
 function decrementQuantity() {
   return "button:contains(-)";
+}
+
+function removeItemButton() {
+  return "button:contains(Remover)";
+}
+
+function removeItemCancelation() {
+  return "button:contains(Cancelar)";
 }
