@@ -29,9 +29,22 @@ module('Acceptance | waiter adds item to new order', {
   }
 });
 
-test('', function(assert) {
+test('clicking the item thumbnail', function(assert) {
   visit('/');
   click(itemWithName("Con Jamón"));
+
+  andThen(function() {
+    assert.equal(orderItemsCount(), 1);
+    assert.equal(quantityOfItem(orderItemWithName("Con Jamón")), "1");
+    assert.equal(totalOfItem(orderItemWithName("Con Jamón")), "$70.00");
+  });
+});
+
+test('and modifies the item quantity', function(assert) {
+  visit('/');
+  click(itemWithName("Con Jamón"));
+  click(incrementQuantity());
+  click(decrementQuantity());
 
   andThen(function() {
     assert.equal(orderItemsCount(), 1);
@@ -58,4 +71,12 @@ function quantityOfItem(item) {
 
 function totalOfItem(item) {
   return item.find("[data-total]").text();
+}
+
+function incrementQuantity() {
+  return "button:contains(+)";
+}
+
+function decrementQuantity() {
+  return "button:contains(-)";
 }

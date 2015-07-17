@@ -30,10 +30,10 @@
           <td class="col-md-4">{{item.name}}</td>
           <td class="col-md-4 text-center">
             <div class="input-group">
-              <input value="1" type="text" class="form-control" width="3" data-quantity>
+              <input value="{{item.quantity}}" type="number" class="form-control" width="3" data-quantity>
               <div class="input-group-btn">
-                <button class="btn btn-default" type="button">+</button>
-                <button class="btn btn-default" type="button">-</button>
+                <button class="btn btn-default" type="button" {{action "incrementQuantity" item}}>+</button>
+                <button class="btn btn-default" type="button" {{action "decrementQuantity" item}}>-</button>
               </div>
             </div>
           </td>

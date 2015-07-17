@@ -10,6 +10,6 @@ export default DS.Model.extend({
   }.property("item.name"),
 
   total: function() {
-    return this.get("item.price");
-  }.property("item.price")
+    return this.get("quantity") * this.get("item.price");
+  }.property("quantity")
 });
