@@ -52,6 +52,21 @@
         {{/if}}
       </tr>
       {{/each}}
+      <tr class="row">
+        <td class="col-md-4"></td>
+        <td class="col-md-4 text-right">Neto:</td>
+        <td id="order_sub_total" class="col-md-4 text-right">{{number-to-currency model.subTotal}}</td>
+      </tr>
+      <tr class="row">
+        <td class="col-md-4"></td>
+        <td class="col-md-4 text-right">IVA:</td>
+        <td id="order_iva" class="col-md-4 text-right">{{number-to-currency model.iva}}</td>
+      </tr>
+      <tr class="row">
+        <th class="col-md-4"></th>
+        <th class="col-md-4 text-right">Neto + IVA:</th>
+        <th id="order_total" class="col-md-4 text-right">{{number-to-currency model.total}}</th>
+      </tr>
     </tbody>
   </table>
 </div>
