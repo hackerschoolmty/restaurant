@@ -7,11 +7,18 @@ export default Ember.Route.extend({
 
   actions: {
     addItemToOrder: function(item) {
-      this.store.createRecord("orderItem", {
-        item: item,
-        order: this.modelFor("newOrder"),
-        quantity: 1
-      });
+      const order = this.modelFor("newOrder");
+      let orderItem = order.get("items").findBy("name", item.get("name"));
+
+      if (orderItem) {
+        orderItem.incrementProperty("quantity");
+      } else {
+        this.store.createRecord("orderItem", {
+          item: item,
+          order: order,
+          quantity: 1
+        });
+      }
     }
   }
 });

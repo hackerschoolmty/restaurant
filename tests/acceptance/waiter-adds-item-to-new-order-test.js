@@ -53,6 +53,19 @@ test('and modifies the item quantity', function(assert) {
   });
 });
 
+test('and increments quantity clicking the thumbnail again', function(assert) {
+  visit('/');
+  click(itemWithName("Con Jamón"));
+  click(itemWithName("Con Jamón"));
+  click(itemWithName("Con Jamón"));
+
+  andThen(function() {
+    assert.equal(orderItemsCount(), 1);
+    assert.equal(quantityOfItem(orderItemWithName("Con Jamón")), "3");
+    assert.equal(totalOfItem(orderItemWithName("Con Jamón")), "$210.00");
+  });
+});
+
 function itemWithName(name) {
   return ".thumbnail:contains(" + name + ")";
 }
